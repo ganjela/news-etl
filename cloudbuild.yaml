@@ -1,0 +1,4 @@
+steps:
+  - name: python
+    entrypoint: pip
+    args: ["install", "-r", "requirements.txt", "--user"]
