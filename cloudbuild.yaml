@@ -1,5 +1,4 @@
-serviceAccount: projects/apple-news-db6d6/serviceAccounts/218389833235-compute@developer.gserviceaccount.com
-
+serviceAccount: $SERVICE_ACCOUNT
 options:
   logging: CLOUD_LOGGING_ONLY
 
@@ -27,4 +26,6 @@ steps:
   - --source=.
   - --trigger-http
   - --runtime=python310
+  env:
+  - 'API_URL = https://newsapi.org/v2/everything?q=apple'
 
