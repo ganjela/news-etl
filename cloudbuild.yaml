@@ -3,16 +3,28 @@ serviceAccount: projects/apple-news-db6d6/serviceAccounts/218389833235-compute@d
 options:
   logging: CLOUD_LOGGING_ONLY
 
+#steps:
+#  - name: 'python'
+#    entrypoint: pip
+#    args: ['install', '--upgrade', 'pip']
+#
+#  - name: 'python'
+#    entrypoint: pip
+#    args: ['install', '-r', 'requirements.txt', '--user']
+#
+#  - name: 'python'
+#    entrypoint: python
+#    args: ['main.py']
+
 steps:
-  - name: 'python'
-    entrypoint: pip
-    args: ['install', '--upgrade', 'pip']
-
-  - name: 'python'
-    entrypoint: pip
-    args: ['install', '-r', 'requirements.txt', '--user']
-
-  - name: 'python'
-    entrypoint: python
-    args: ['main.py']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - extract
+  - --region=europe-west1
+  - --source=.
+  - --trigger-http
+  - --runtime= python
 
